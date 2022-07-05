@@ -28,8 +28,8 @@ for pagenum in tqdm(range(1, lastnum + 1)):
         cols.append(remove_page_api.match(t.find("a").get("href"))[1])  # prefix: http://www.anmawon.com
         table_list.append(cols)
 
-#with open("test.json", "w", encoding="UTF-8") as f:
-#    json.dump(table_list, f, ensure_ascii=False)
-print(table_list)
-print(len(table_list))
+with open("test.json", "w", encoding="UTF-8") as f:
+    json.dump(table_list, f, ensure_ascii=False)
+# print(table_list)
+# print(len(table_list))
 # table_list.append({"region", "name", "addr", "phone", "href"})
