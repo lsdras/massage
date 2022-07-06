@@ -27,5 +27,7 @@ for pagenum in tqdm(range(1, lastnum + 1)):
         cols.append(remove_page_api.match(t.find("a").get("href"))[1])  # prefix: http://www.anmawon.com
         table_list.append(cols)
 # {"region", "name", "addr", "phone", "href"}
-df = pd.DataFrame(table_list, columns=["지역", "사업장명", "주소", "전화번호", "링크"])
+df = pd.DataFrame(table_list, columns=["지역", "사업장명", "주소", "전화", "링크"])
+df.fillna("", inplace=True)
+
 df.to_csv("anmawon.csv", header=True, index=False)
