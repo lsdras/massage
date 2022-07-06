@@ -1,5 +1,4 @@
-import json
-
+import pandas as pd
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -27,9 +26,6 @@ for pagenum in tqdm(range(1, lastnum + 1)):
         cols = [i.text.strip() for i in t.find_all("td")]
         cols.append(remove_page_api.match(t.find("a").get("href"))[1])  # prefix: http://www.anmawon.com
         table_list.append(cols)
-
-with open("test.json", "w", encoding="UTF-8") as f:
-    json.dump(table_list, f, ensure_ascii=False)
-# print(table_list)
-# print(len(table_list))
-# table_list.append({"region", "name", "addr", "phone", "href"})
+# {"region", "name", "addr", "phone", "href"}
+df = pd.DataFrame(table_list, columns=["지역", "사업장명", "주소", "전화번호", "링크"])
+df.to_csv("anmawon.csv", header=True, index=False)
