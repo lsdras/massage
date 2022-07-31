@@ -1,10 +1,10 @@
-//var HOME_PATH = window.HOME_PATH || '.';
+var HOME_PATH = window.HOME_PATH || '.';
 
 var POSITIONS = data;
 
 var map = new naver.maps.Map('map', {
     center: new naver.maps.LatLng(35.2289348, 126.8476802),
-    zoom: 18
+    zoom: 14
 });
 
 var bounds = map.getBounds(),
@@ -25,15 +25,21 @@ for (var i = 0; i < POSITIONS.length; i++) {
         position: position,
         title: POSITIONS[i].name,
         icon: {
-            url: "https://github.com/navermaps/maps.js.en/blob/master/docs/img/example/sp_pins_spot_v3.png",
+            url: "https://github.com/navermaps/maps.js.en/blob/master/docs/img/example/pin_map.png",
             size: new naver.maps.Size(24, 37),
+            scaledSize: new naver.maps.Size(25, 34),
             anchor: new naver.maps.Point(12, 37),
             origin: new naver.maps.Point(POSITIONS[i].y, POSITIONS[i].x)
         },
         zIndex: 100
     });
     var infoWindow = new naver.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:10px;">The Name is <b>"' + POSITIONS[i].name + '"</b>.</div>'
+        content: '<div style="width:200px;text-align:left;padding:10px;">'
+            + '업체명: <b>' + POSITIONS[i].name + '</b><br>'
+            + '전화: <b>' + POSITIONS[i].phone + '</b><br>'
+            + '안마사협회 관련: <a href="' + POSITIONS[i].hlink + '"><b>' + POSITIONS[i].checked + '</b></a><br>'
+            + '주소: ' + POSITIONS[i].unique_addr + '<br>'
+            + '</div>'
     });
 
     markers.push(marker);
