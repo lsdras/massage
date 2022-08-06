@@ -41,7 +41,7 @@ for (var i = 0; i < POSITIONS.length; i++) {
         content: '<div style="width:200px;text-align:left;padding:10px;">'
             + '업체명: <b>' + POSITIONS[i].name + '</b><br>'
             + '전화: <b>' + POSITIONS[i].phone + '</b><br>'
-            + '안마사협회 관련: <a href="' + POSITIONS[i].hlink + '"><b>' + POSITIONS[i].checked + '</b></a><br>'
+            + '안마사협회 관련: <a href="' + POSITIONS[i].link + '"><b>' + POSITIONS[i].checked + '</b></a><br>'
             + '주소: ' + POSITIONS[i].unique_addr + '<br>'
             + '</div>'
     });
