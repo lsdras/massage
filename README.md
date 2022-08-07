@@ -1,5 +1,6 @@
 # 정식 안마사가 있는 안마원 지도</br></br>지도 페이지</br> https://lsdras.github.io/massage
-
+[![Hits](https://hits.sh/lsdras.github.io/massage.svg?view=today-total)](https://hits.sh/lsdras.github.io/massage/)
+---
 
 # 주의 
 ## 1. "안마사협회 관련: 미확인"<br/> 빨간색 마크로 나타난 업소들은 불법, 무자격 업체를 뜻하지 않습니다.
