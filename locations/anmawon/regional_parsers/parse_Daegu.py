@@ -7,7 +7,6 @@ import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
-
 response = requests.get(
     f"http://www.dganma.com/bbs/board.php?bo_table=find",
     headers={
@@ -33,8 +32,15 @@ if len(table_list) == 0:
 else:
     pass
 # get table contents
+remove_span_text = re.compile(r"(.*)(댓글.*)")
 for t in bs_obj.table.tbody.find_all("tr"):
-    cols = [i.text.strip() for i in t.find_all("td")]
+    cols = []
+    for i in  t.find_all("td"):
+        try:
+            data_string = remove_span_text.match(i.text.strip())[1].strip()
+        except:
+            data_string = i.text.strip()
+        cols.append(data_string)
     cols.append(t.find("a").get("href"))
     table_list.append(cols)
 

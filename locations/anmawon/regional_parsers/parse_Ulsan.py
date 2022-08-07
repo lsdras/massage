@@ -29,6 +29,6 @@ table_list = [
 df = pd.DataFrame(table_list[1:], columns=table_list[0])
 df.fillna("", inplace=True)
 df.rename(columns={"번호":"number", "지역":"region", "상호": "name", "주소": "addr", "전화번호": "phone"}, inplace=True)
-
+df = df.assign(link="http://usanma.or.kr/bbs/content.php?co_id=d_c")
 df.to_csv("../regions/Ulsan.csv")
 

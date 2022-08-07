@@ -23,7 +23,7 @@ for a in bs_obj.find_all('a', href=True):
         lastnum = int(get_last_page.match(a["href"])[3])
 
 table_list = []
-
+remove_page_api = re.compile(r"(.*)(&page=\d+)")
 for pagenum in tqdm(range(1, lastnum + 1)):
     # get html
     response = requests.get(
@@ -48,7 +48,7 @@ for pagenum in tqdm(range(1, lastnum + 1)):
     # get table contents
     for t in bs_obj.table.tbody.find_all("tr"):
         cols = [i.text.strip() for i in t.find_all("td")]
-        cols.append("http://www.anmawon.com" + t.find("a").get("href"))
+        cols.append("http://www.anmawon.com" + remove_page_api.match(t.find("a").get("href"))[1])
         table_list.append(cols)
 
 # {"region", "name", "addr", "phone", "href"}

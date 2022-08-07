@@ -5,9 +5,10 @@ import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
+URL = "http://xn--hz2b11ew7coa499cy81avya.kr/skin/sub_page.php?page_idx=141"
 
 response = requests.get(
-    f"http://xn--hz2b11ew7coa499cy81avya.kr/skin/sub_page.php?page_idx=141",
+    URL,
     headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
     },
@@ -28,4 +29,5 @@ df = pd.DataFrame(table_list[1:], columns=table_list[0])
 df.fillna("", inplace=True)
 
 df.rename(columns={"상호명": "name", "주소": "addr", "전화번호": "phone", "비고": "etc"}, inplace=True)
+df = df.assign(link=URL)
 df.to_csv("../regions/Busan.csv")

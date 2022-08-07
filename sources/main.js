@@ -1,7 +1,7 @@
 
 const HOME_PATH = window.HOME_PATH || '.';
 
-const POSITIONS = data;
+const POSITIONS = location_data;
 
 const map = new naver.maps.Map('map', {
     center: new naver.maps.LatLng(35.2289348, 126.8476802),
