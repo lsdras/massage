@@ -19,7 +19,7 @@ for (var i = 0; i < POSITIONS.length; i++) {
     let img_url = undefined;
     if (POSITIONS[i].checked.startsWith("O")) {
         img_url = "./images/ico_pin_blue.png"
-    } else if (POSITIONS[i].checked.startsWith("X")) {
+    } else if (POSITIONS[i].checked.startsWith("미확인")) {
         img_url = "./images/ico_pin_red.png"
     } else {
         img_url = "./images/ico_pin_brown.png"
